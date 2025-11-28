@@ -1,4 +1,17 @@
-<body class="flex justify-center">
-    <h1 class="text-3xl text-center font-thin ">To-do List</h1>
-    <app-card [task]="t"></app-card>
-</body>
+<section class="text-center flex flex-col gap-9 pt-7">
+  <h1 class="text-3xl text-center font-light justify-center text-[#df967a]">To-do List</h1>
+
+  <form (ngSubmit)="addTask()" class="justify-evenly flex text-center">
+    <input type="text" placeholder="Titulo" [(ngModel)]="newTask.titulo" name="titulo" required
+    class="text-gray-500 bg-amber-100 w-[134px]">
+    <input type="text" placeholder="Descripción" [(ngModel)]="newTask.descripcion" name="descripcion"
+    class="text-gray-500 bg-amber-200 w-[134px]">
+    <button type="submit" class="bg-amber-100 text-amber-400 rounded-[10px] py-0.5 px-4">Agregar</button>
+  </form>
+
+  <h2 class="text-[#df967a] text-[21px]">Lista de tareas</h2>
+</section>
+
+<div *ngFor="let t of task" class="justify-center pt-5 flex">
+  <app-card [task]="t"></app-card>
+</div>

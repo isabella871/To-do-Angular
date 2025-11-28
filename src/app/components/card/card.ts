@@ -8,5 +8,5 @@ import { Task } from '../../interfaces/task';
 })
 
 export class Card {
-@Input() task!: Task;
+  @Input() task!: Task;
 }
