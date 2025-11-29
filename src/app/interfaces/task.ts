@@ -2,6 +2,7 @@ export interface Task {
   id: number;
   titulo: String;
   descripcion: String;
-  completada: Boolean;
+  estado: String;
   prioridad: String;
+  fecha: String;
 }

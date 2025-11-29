@@ -10,6 +10,7 @@ import { NgFor } from '@angular/common';
   imports: [FormsModule, Card, NgFor],
   templateUrl: './inicio.html',
 })
+
 export class Inicio {
   task: Task[] = [];
 
@@ -17,13 +18,16 @@ export class Inicio {
     id: 0,
     titulo: '',
     descripcion: '',
-    completada: false,
-    prioridad: ''
+    estado: false,
+    prioridad: '',
+    fecha: ''
   };
+
 
   addTask(){
     this.newTask.id = this.task.length + 1;
 
+    //Agregar tarea, el array queda lleno22
     this.task.push({...this.newTask});
 
     // Limpia el formulario
@@ -31,8 +35,9 @@ export class Inicio {
       id: 0,
       titulo: '',
       descripcion: '',
-      completada: false,
-      prioridad: ''
+      estado: false,
+      prioridad: '',
+      fecha:''
     };
   }
 }

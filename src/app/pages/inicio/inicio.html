@@ -1,17 +1,46 @@
-<section class="text-center flex flex-col gap-9 pt-7">
-  <h1 class="text-3xl text-center font-light justify-center text-[#df967a]">To-do List</h1>
+<section class="flex flex-col gap-9 pt-7 w-full max-h-screen bg-[#f9f0e1]">
+  <h1 class="text-3xl text-center font-light mb-5">To-do List</h1>
 
-  <form (ngSubmit)="addTask()" class="justify-evenly flex text-center">
-    <input type="text" placeholder="Titulo" [(ngModel)]="newTask.titulo" name="titulo" required
-    class="text-gray-500 bg-amber-100 w-[134px]">
-    <input type="text" placeholder="Descripción" [(ngModel)]="newTask.descripcion" name="descripcion"
-    class="text-gray-500 bg-amber-200 w-[134px]">
-    <button type="submit" class="bg-amber-100 text-amber-400 rounded-[10px] py-0.5 px-4">Agregar</button>
-  </form>
+  <div class="flex justify-around">
+    <form (ngSubmit)="addTask()" class="bg-[#f1e8d8] shadow-md rounded-xl h-[520px] p-6 w-[290px] space-y-4">
 
-  <h2 class="text-[#df967a] text-[21px]">Lista de tareas</h2>
+      <!-- Llena la variable newTask dentro de Inicio.ts (newTask) -->
+      <input type="text" placeholder="Titulo" [(ngModel)]="newTask.titulo" name="titulo" required
+      class="w-full p-2 border-0 border-b-2 focus:outline-none">
+
+      <textarea type="text" placeholder="Descripción" [(ngModel)]="newTask.descripcion" name="descripcion"
+      class="p-2 border rounded-lg focus:outline-none w-60"></textarea>
+
+      <label class="block text-gray-600 text-sm">Fecha límite</label>
+      <input type="date" [(ngModel)]="newTask.fecha" name="fecha"
+      class="w-full p-2border-0 border-b-2 focus:outline-none">
+
+      <label class="block text-gray-600 text-sm">Prioridad</label>
+      <select name="Prioridad" [(ngModel)]="newTask.prioridad"
+      class="w-full p-2 border-0 border-b-2 focus:outline-none">
+        <option value="" disabled selected>Seleccione una opcion</option>
+        <option value="alta">🔴 Alta </option>
+        <option value="media">🟠 Media </option>
+        <option value="baja">🟡 Baja </option>
+      </select>
+
+      <label class="block text-gray-600 text-sm">Estado</label>
+      <select name="completada" [(ngModel)]="newTask.estado"
+      class="w-full p-2 border-0 border-b-2 focus:outline-none">
+      <option value="pendiente">Pendiente ⚠️</option>
+      <option value="proceso">En proceso ⭕</option>
+      <option value="completada">completada ✔️</option>
+      </select>
+
+      <button type="submit" class="w-full p-2 bg-[#d98e6a] text-white rounded-lg hover:bg-[#d67d54] transition-all">Agregar</button>
+    </form>
+
+    <div>
+      <h2 class="text-[#df967a] font-light text-[21px]">Lista de tareas</h2>
+
+      <div *ngFor="let t of task" class="pt-5 flex">
+        <app-card [task]="t"></app-card>
+      </div>
+    </div>
+  </div>
 </section>
-
-<div *ngFor="let t of task" class="justify-center pt-5 flex">
-  <app-card [task]="t"></app-card>
-</div>

@@ -1,11 +1,14 @@
-<div class="bg-gray-100 w-[400px] rounded-[10px] flex justify-between p-5">
+<div class="bg-[#f5e6cf] justify-between w-[360px] rounded-[10px] flex p-5">
     <div>
-        <h1 class="text-gray-600">{{ task.titulo }}</h1>
-        <p class="text-gray-400">{{ task.descripcion }}</p>
-        <p class="text-gray-400" [class.completada]="task.completada">
-            Estado: {{ task.completada ? 'completada' : 'pendiente' }}
-        </p>
+        <h1 class="font-semibold">{{ task.titulo }}</h1>
+        <p class="pt-2 wrap-break-word w-[230px]">{{ task.descripcion }}</p>
+        <p [class.completada]="task.estado"
+        ngClass="{
+          'text-yellow-600': task.estado === 'pendiente',
+          'text-blue-600': task.estado === 'proceso',
+          'text-green-600': task.estado === 'completada'
+        }"></p>
         <p class="text-gray-400">{{ task.prioridad }}</p>
     </div>
-    <input type="date" class="text-blue-300 text-[14px]">
+    <p class="text-[13px]">{{ task.fecha || 'Sin fecha' }}</p>
 </div>
